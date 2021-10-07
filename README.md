@@ -23,7 +23,7 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/h1MUkBN.gif' title='Launching & Login' width='400' height='600' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/vBUa8Mx.gif' title='Launching & Login' width='400' height='600' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/h1MUkBN.gif' title='Launching & Login' width='300' height='600' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/vBUa8Mx.gif' title='Launching & Login' width='300' height='600' alt='Video Walkthrough' />
 
 
