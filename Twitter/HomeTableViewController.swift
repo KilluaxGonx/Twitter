@@ -17,17 +17,16 @@ class HomeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTweets()
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadTweets()
 
+    }
     
     @objc func loadTweets() {
         
@@ -46,7 +45,7 @@ class HomeTableViewController: UITableViewController {
             self.myRefreshControl.endRefreshing()
             
         }, failure: { (Error) in
-            print("Could not retrieve tweets!")
+            print("Could not retrieve tweets! - \(Error)")
         })
         
     }
@@ -67,7 +66,7 @@ class HomeTableViewController: UITableViewController {
             self.tableView.reloadData()
             
         }, failure: { (Error) in
-            print("Could not retrieve tweets!")
+            print("Could not retrieve tweets! - \(Error)")
         })
         
     }
@@ -93,14 +92,13 @@ class HomeTableViewController: UITableViewController {
             cell.profileImage.image = UIImage(data: imageData)
         }
         
+        cell.tweetID = tweet["id"] as! Int
+        cell.setFavorited(tweet["favorited"] as! Bool)
+        cell.setRetweeted(tweet["retweeted"] as! Bool)
+        
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == tweets.count {
-            loadMoreTweets()
-        }
-    }
     
     // MARK: - Table view data source
 
